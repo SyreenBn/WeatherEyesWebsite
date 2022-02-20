@@ -1,0 +1,19 @@
+{% extends 'main/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Site</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        {% block content %}
+            <h1>Home Page</h1>
+        {% endblock %}
+    {% else %}
+        <a href="/login">Please login here to view the site.</a>
+    {% endif %}
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+{% extends 'main/base.html' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Future Forecast</title>
+</head>
+<body>
+    {% if user.is_authenticated %}
+        {% block content %}
+            <h1>
+				Forecast of
+			</h1>
+      <input onclick="change()" type="button" value="Next Days Forecast" id="myButton1"></input>
+      <script>
+      function change() // no ';' here
+      {
+          if (document.getElementById("myButton1").value=="Next Days Forecast") document.getElementById("myButton1").value = "Hourly Forecast";
+          else document.getElementById("myButton1").value = "Next Days Forecast";
+      }
+      </script>
+			<section>
+				<h2>
+					<p> The Weather Channel </p>
+				</h2>
+				<fieldset>
+					<legend>weather.com</legend>
+          <div>
+            <!--  {% if today_data == 'daily' %} -->
+                  {% for d in today_data %}
+                      <h3>Date: {{d.Date}}</h3>
+                      <p>Minimum Temp: {{d.MinTempC}} <span>&#8451;</span> </p>
+                      <p>Maximum Temp: {{d.MaxTempC}} <span>&#8451;</span> </p>
+                      <p>Minimum Temp: {{d.MinTempF}} <span>&#8457;</span> </p>
+                      <p>Maximum Temp: {{d.MaxTempF}} <span>&#8457;</span> </p>
+                      <p>Minimum Temp: {{d.MinTempK}} <span>&#8490;</span> </p>
+                      <p>Maximum Temp: {{d.MaxTempK}} <span>&#8490;</span> </p>
+                      <p>Percipitation: {{d.PrecipitationProb}} <span>&#37;</span> </p>
+                      <p>Description: {{d.Description}} </p>
+                      <p>Time collected: {{d.TimeCollected}} </p>
+                  {% endfor %}
+              <!--{% endif %}-->
+
+          </div>
+				</fieldset>
+			</section>
+
+			<section>
+				<h2>
+					<p> AccuWeather </p>
+				</h2>
+				<fieldset>
+					<legend>accuweather.com</legend>
+					<p>I </p>
+					<p> hi</p>
+					<p>dfdf</p>
+					<p>dfds</p>
+					<p>sdgfs</p>
+				</fieldset>
+			</section>
+
+			<section>
+				<h2>
+					<p> National Weather Service </p>
+				</h2>
+				<fieldset>
+					<legend>www.weather.gov</legend>
+					<p>I </p>
+					<p> hi</p>
+					<p>dfdf</p>
+					<p>dfds</p>
+					<p>sdgfs</p>
+				</fieldset>
+			</section>
+
+
+			<ul>
+				<li>
+					The first item of the future forecast
+				</li>
+				<li>
+					The second item
+				</li>
+				<li>
+					The third item
+				</li>
+			</ul>
+        {% endblock %}
+    {% else %}
+        <a href="/login">Please login here to view the site.</a>
+    {% endif %}
+</body>
+</html>
